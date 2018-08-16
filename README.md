@@ -48,14 +48,16 @@ Write a config at `~/orchestrator_config.json`, for example:
             "trs_id": "dockstore", 
             "version_id": "develop", 
             "workflow_type": "WDL"
-        }, 
+        }
     }, 
     "workflowservices": {
         "local": {
-            "auth_type": "", 
-            "host": "0.0.0.0:8080", 
-            "auth": "", 
-            "proto": "http"
+            "host": "0.0.0.0:8080",
+            "auth": {"Authorization": ""},
+            "proto": "http",
+            "wespath": "ga4gh/wes/v1/",
+            "wfparam": "runs",
+            "version": "1"
         }
     }
 }
