@@ -207,7 +207,7 @@ def run_all():
         try:
             for service in services:
                 if service_ready(service):
-                    received_submissions = get_submissions(service, status='RECEIVED')
+                    received_submissions = sorted(get_submissions(service, status='RECEIVED'))
                     try:
                         run_submission(service, received_submissions[0])
                     except ConnectionError:
