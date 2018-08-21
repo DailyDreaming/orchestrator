@@ -90,23 +90,23 @@
  "Helium-Toil-Chronos":
    {"NWD119836_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file:///home/ubuntu/NWD119836.json",
+       "jsonyaml": "file:///tests/data/helium/NWD119836.json",
        "input": "/renci/.../NWD119836.0005.recab.cram"},
     "NWD136397_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file:///home/ubuntu/NWD136397.json",
+       "jsonyaml": "file:///tests/data/helium/NWD136397.json",
        "input": "/renci/.../NWD119836.0005.recab.cram"},
     "NWD176325_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file:///home/ubuntu/NWD176325.json",
+       "jsonyaml": "file:///tests/data/helium/NWD176325.json",
        "input": "/renci/.../NWD119836.0005.recab.cram"},
     "NWD231092_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file:///home/ubuntu/NWD231092.json",
+       "jsonyaml": "file:///tests/data/helium/NWD231092.json",
        "input": "/renci/.../NWD119836.0005.recab.cram"},
     "NWD315403_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file:///home/ubuntu/NWD315403.json",
+       "jsonyaml": "file:///tests/data/helium/NWD315403.json",
        "input": "/renci/.../NWD119836.0005.recab.cram"}
   }
 }
