@@ -241,32 +241,40 @@ def monitor_service(wf_service):
         else:
             try:
                 run = submissions[wf_service][run_id]['run']
-
-                client = WESClient(wes_config()[wf_service])
-                try:
-                    wf_id = run['workflow_id']
-                except KeyError:
-                    wf_id = run['run_id']
-                if 'state' not in run:
-                    run['state'] = client.get_run_status(wf_id)['state'].upper()
-                elif run['state'].upper() not in ['COMPLETED', 'OK', 'EXECUTOR_ERROR']:
-                    run['state'] = client.get_run_status(wf_id)['state'].upper()
-
-                if run['state'] in ['QUEUED', 'INITIALIZING', 'RUNNING']:
-                    etime = convert_timedelta(dt.datetime.now() - ctime2datetime(run['start_time']))
-                elif 'elapsed_time' not in run:
-                    etime = '0h:0m:0s'
+                if 'run_id' not in run and 'workflow_id' not in run:
+                    status_dict.setdefault(wf_service, {})[run_id] = {
+                        'wf_id': submissions[wf_service][run_id]['wf_id'],
+                        'run_id': '-',
+                        'sample_name': sample_name,
+                        'run_status': 'QUEUED',
+                        'start_time': '-',
+                        'elapsed_time': '-'}
                 else:
-                    update_submission(wf_service, run_id, 'status', run['state'])
-                    etime = run['elapsed_time']
-                update_submission_run(wf_service, run_id, 'elapsed_time', etime)
-                status_dict.setdefault(wf_service, {})[run_id] = {
-                    'wf_id': submissions[wf_service][run_id]['wf_id'],
-                    'run_id': wf_id,
-                    'sample_name': sample_name,
-                    'run_status': run['state'],
-                    'start_time': run['start_time'],
-                    'elapsed_time': etime}
+                    client = WESClient(wes_config()[wf_service])
+                    try:
+                        wf_id = run['workflow_id']
+                    except KeyError:
+                        wf_id = run['run_id']
+                    if 'state' not in run:
+                        run['state'] = client.get_run_status(wf_id)['state'].upper()
+                    elif run['state'].upper() not in ['COMPLETED', 'OK', 'EXECUTOR_ERROR']:
+                        run['state'] = client.get_run_status(wf_id)['state'].upper()
+
+                    if run['state'] in ['QUEUED', 'INITIALIZING', 'RUNNING']:
+                        etime = convert_timedelta(dt.datetime.now() - ctime2datetime(run['start_time']))
+                    elif 'elapsed_time' not in run:
+                        etime = '0h:0m:0s'
+                    else:
+                        update_submission(wf_service, run_id, 'status', run['state'])
+                        etime = run['elapsed_time']
+                    update_submission_run(wf_service, run_id, 'elapsed_time', etime)
+                    status_dict.setdefault(wf_service, {})[run_id] = {
+                        'wf_id': submissions[wf_service][run_id]['wf_id'],
+                        'run_id': wf_id,
+                        'sample_name': sample_name,
+                        'run_status': run['state'],
+                        'start_time': run['start_time'],
+                        'elapsed_time': etime}
             except ConnectionError:
                 status_dict.setdefault(wf_service, {})[run_id] = {
                     'wf_id': 'ConnectionError',
