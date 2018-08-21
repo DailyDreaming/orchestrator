@@ -231,7 +231,7 @@ def monitor_service(wf_service):
     for run_id in submissions[wf_service]:
         sample_name = submissions[wf_service][run_id]['sample']
         if 'run' not in submissions[wf_service][run_id]:
-            status_dict.setdefault(wf_service, {})[run_id[10:]] = {
+            status_dict.setdefault(wf_service, {})[run_id] = {
                 'wf_id': submissions[wf_service][run_id]['wf_id'],
                 'run_id': '-',
                 'sample_name': sample_name,
@@ -242,7 +242,7 @@ def monitor_service(wf_service):
             try:
                 run = submissions[wf_service][run_id]['run']
                 if 'run_id' not in run and 'workflow_id' not in run:
-                    status_dict.setdefault(wf_service, {})[run_id[10:]] = {
+                    status_dict.setdefault(wf_service, {})[run_id] = {
                         'wf_id': submissions[wf_service][run_id]['wf_id'],
                         'run_id': '-',
                         'sample_name': sample_name,
@@ -268,7 +268,7 @@ def monitor_service(wf_service):
                         update_submission(wf_service, run_id, 'status', run['state'])
                         etime = run['elapsed_time']
                     update_submission_run(wf_service, run_id, 'elapsed_time', etime)
-                    status_dict.setdefault(wf_service, {})[run_id[10:]] = {
+                    status_dict.setdefault(wf_service, {})[run_id] = {
                         'wf_id': submissions[wf_service][run_id]['wf_id'],
                         'run_id': wf_id,
                         'sample_name': sample_name,
@@ -276,7 +276,7 @@ def monitor_service(wf_service):
                         'start_time': run['start_time'],
                         'elapsed_time': etime}
             except ConnectionError:
-                status_dict.setdefault(wf_service, {})[run_id[10:]] = {
+                status_dict.setdefault(wf_service, {})[run_id] = {
                     'wf_id': 'ConnectionError',
                     'run_id': '-',
                     'sample_name': sample_name,
