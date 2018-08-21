@@ -247,7 +247,11 @@ def monitor_service(wf_service):
                     wf_id = run['workflow_id']
                 except KeyError:
                     wf_id = run['run_id']
-                run['state'] = client.get_run_status(wf_id)['state'].upper()
+                if 'state' not in run:
+                    run['state'] = client.get_run_status(wf_id)['state'].upper()
+                elif run['state'].upper() not in ['COMPLETED', 'OK', 'EXECUTOR_ERROR']:
+                    run['state'] = client.get_run_status(wf_id)['state'].upper()
+
                 if run['state'] in ['QUEUED', 'INITIALIZING', 'RUNNING']:
                     etime = convert_timedelta(dt.datetime.now() - ctime2datetime(run['start_time']))
                 elif 'elapsed_time' not in run:
