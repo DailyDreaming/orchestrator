@@ -50,38 +50,21 @@
       {"wf_name": "cwl_UoM_align",
        "jsonyaml": "file://tests/data/argon/NWD315403.json"}
   },
- "Helium-Toil-Chronos":
-   {"NWD119836_downsampled":
-      {"wf_name": "cwl_UoM_align",
-       "jsonyaml": "file://tests/data/argon/NWD119836.json"},
-    "NWD136397_downsampled":
-      {"wf_name": "cwl_UoM_align",
-       "jsonyaml": "file://tests/data/argon/NWD136397.json"},
-    "NWD176325_downsampled":
-      {"wf_name": "cwl_UoM_align",
-       "jsonyaml": "file://tests/data/argon/NWD176325.json"},
-    "NWD231092_downsampled":
-      {"wf_name": "cwl_UoM_align",
-       "jsonyaml": "file://tests/data/argon/NWD231092.json"},
-    "NWD315403_downsampled":
-      {"wf_name": "cwl_UoM_align",
-       "jsonyaml": "file://tests/data/argon/NWD315403.json"}
-  },
  "Calcium-Cromwell-Google":
    {"NWD119836_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file://tests/data/calciumcromwell/NWD119836.json"},
+       "jsonyaml": "file:///home/ubuntu/NWD119836.json"},
     "NWD136397_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file://tests/data/calciumcromwell/NWD136397.json"},
+       "jsonyaml": "file:///home/ubuntu/NWD136397.json"},
     "NWD176325_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file://tests/data/calciumcromwell/NWD176325.json"},
+       "jsonyaml": "file:///home/ubuntu/NWD176325.json"},
     "NWD231092_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file://tests/data/calciumcromwell/NWD231092.json"},
+       "jsonyaml": "file:///home/ubuntu/NWD231092.json"},
     "NWD315403_downsampled":
       {"wf_name": "wdl_UoM_align",
-       "jsonyaml": "file://tests/data/calciumcromwell/NWD315403.json"}
+       "jsonyaml": "file:///home/ubuntu/NWD315403.json"}
   }
 }
