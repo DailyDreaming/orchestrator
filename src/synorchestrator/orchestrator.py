@@ -249,7 +249,7 @@ def monitor_service(wf_service):
                     'wf_id': submissions[wf_service][run_id]['wf_id'],
                     'run_id': wf_id,
                     'sample_name': sample_name,
-                    'run_status': run['state'],
+                    'run_status': submissions[wf_service][run_id]['status'],
                     'start_time': run['start_time'],
                     'elapsed_time': run['elapsed_time']}
             else:
