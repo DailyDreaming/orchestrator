@@ -325,7 +325,3 @@ def monitor():
         display(status_df)
         sys.stdout.flush()
         time.sleep(2)
-
-# set_queue_from_user_json('/home/quokka/git/current_demo/orchestrator/src/tests/data/user_submission_example.json')
-# run_all()
-# run_submission("local", "080808180808830195")
